@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Footer</title>
+  <!-- Font Awesome CDN for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 20px 10px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .footer-logo img {
+      height: 50px;
+    }
+
+    .footer-info {
+      flex: 1 1 300px;
+      margin: 10px;
+    }
+
+    .footer-social a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: #1e90ff;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+      }
+
+      .footer-info,
+      .footer-social {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Welcome to Our Website</h1>
+    <p>This is a sample page with a responsive footer at the bottom.</p>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <!-- Optional logo image -->
+        <!-- <img src="logo.png" alt="Company Logo" /> -->
+      </div>
+
+      <div class="footer-info">
+        <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+        <p>Email: contact@yourcompany.com | Phone: +1 234 567 890</p>
+      </div>
+
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
