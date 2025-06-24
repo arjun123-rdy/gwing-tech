@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .contact-form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .contact-form h2 {
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: none;
+      font-size: 16px;
+    }
+
+    .contact-form button {
+      width: 100%;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .contact-form button:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+
+    .success {
+      color: green;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <h2>Contact Us</h2>
+
+    <input type="text" name="name" id="name" placeholder="Your Name" required />
+    <div id="nameError" class="error"></div>
+
+    <input type="email" name="email" id="email" placeholder="Your Email" required />
+    <div id="emailError" class="error"></div>
+
+    <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+    <div id="messageError" class="error"></div>
+
+    <button type="submit">Send Message</button>
+    <div id="status" class="success"></div>
+  </form>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', function(event) {
+      let isValid = true;
+
+      // Clear previous errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('messageError').textContent = '';
+      status.textContent = '';
+
+      // Name validation
+      if (nameInput.value.trim() === '') {
+        document.getElementById('nameError').textContent = 'Name is required';
+        isValid = false;
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        document.getElementById('emailError').textContent = 'Enter a valid email';
+        isValid = false;
+      }
+
+      // Message validation
+      if (messageInput.value.trim().length < 5) {
+        document.getElementById('messageError').textContent = 'Message must be at least 5 characters';
+        isValid = false;
+      }
+
+      if (!isValid) {
+        event.preventDefault();
+      } else {
+        status.textContent = "Sending...";
+      }
+    });
+  </script>
+
+</body>
+</html>
